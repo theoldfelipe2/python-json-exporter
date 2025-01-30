@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Select } from "@/components/ui/select";
+import { 
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { tiposEventos } from '@/data/lists';
 
@@ -32,16 +38,16 @@ const EventosEspeciais = () => {
     <div className="space-y-6">
       <div className="flex space-x-4">
         <Select value={novoTipo} onValueChange={setNovoTipo}>
-          <Select.Trigger className="w-full">
-            <Select.Value placeholder="Tipo de Evento" />
-          </Select.Trigger>
-          <Select.Content>
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="Tipo de Evento" />
+          </SelectTrigger>
+          <SelectContent>
             {tiposEventos.map((item) => (
-              <Select.Item key={item.value} value={item.value}>
+              <SelectItem key={item.value} value={item.value}>
                 {item.label}
-              </Select.Item>
+              </SelectItem>
             ))}
-          </Select.Content>
+          </SelectContent>
         </Select>
 
         <Input

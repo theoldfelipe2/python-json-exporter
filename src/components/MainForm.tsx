@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Select } from "@/components/ui/select";
+import { 
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { qualificacaoPJ, tributacaoLucro, regimeReconhecimento, regimePisCofins } from '@/data/lists';
 
@@ -11,6 +17,10 @@ const MainForm = () => {
   const [endDate, setEndDate] = useState<Date>();
   const [exportPath, setExportPath] = useState('');
   const [semMovimento, setSemMovimento] = useState(false);
+  const [qualificacao, setQualificacao] = useState('');
+  const [tributacao, setTributacao] = useState('');
+  const [regime, setRegime] = useState('');
+  const [regimePis, setRegimePis] = useState('');
 
   const handleExportPathSelect = () => {
     // TODO: Implement file dialog
@@ -53,56 +63,56 @@ const MainForm = () => {
       </div>
 
       <div className="grid grid-cols-2 gap-4">
-        <Select>
-          <Select.Trigger className="w-full">
-            <Select.Value placeholder="Qualificação da PJ" />
-          </Select.Trigger>
-          <Select.Content>
+        <Select value={qualificacao} onValueChange={setQualificacao}>
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="Qualificação da PJ" />
+          </SelectTrigger>
+          <SelectContent>
             {qualificacaoPJ.map((item) => (
-              <Select.Item key={item.value} value={item.value}>
+              <SelectItem key={item.value} value={item.value}>
                 {item.label}
-              </Select.Item>
+              </SelectItem>
             ))}
-          </Select.Content>
+          </SelectContent>
         </Select>
 
-        <Select>
-          <Select.Trigger className="w-full">
-            <Select.Value placeholder="Tributação do Lucro" />
-          </Select.Trigger>
-          <Select.Content>
+        <Select value={tributacao} onValueChange={setTributacao}>
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="Tributação do Lucro" />
+          </SelectTrigger>
+          <SelectContent>
             {tributacaoLucro.map((item) => (
-              <Select.Item key={item.value} value={item.value}>
+              <SelectItem key={item.value} value={item.value}>
                 {item.label}
-              </Select.Item>
+              </SelectItem>
             ))}
-          </Select.Content>
+          </SelectContent>
         </Select>
 
-        <Select>
-          <Select.Trigger className="w-full">
-            <Select.Value placeholder="Regime" />
-          </Select.Trigger>
-          <Select.Content>
+        <Select value={regime} onValueChange={setRegime}>
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="Regime" />
+          </SelectTrigger>
+          <SelectContent>
             {regimeReconhecimento.map((item) => (
-              <Select.Item key={item.value} value={item.value}>
+              <SelectItem key={item.value} value={item.value}>
                 {item.label}
-              </Select.Item>
+              </SelectItem>
             ))}
-          </Select.Content>
+          </SelectContent>
         </Select>
 
-        <Select>
-          <Select.Trigger className="w-full">
-            <Select.Value placeholder="Regime PIS/COFINS" />
-          </Select.Trigger>
-          <Select.Content>
+        <Select value={regimePis} onValueChange={setRegimePis}>
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="Regime PIS/COFINS" />
+          </SelectTrigger>
+          <SelectContent>
             {regimePisCofins.map((item) => (
-              <Select.Item key={item.value} value={item.value}>
+              <SelectItem key={item.value} value={item.value}>
                 {item.label}
-              </Select.Item>
+              </SelectItem>
             ))}
-          </Select.Content>
+          </SelectContent>
         </Select>
       </div>
 
