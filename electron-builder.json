@@ -1,0 +1,22 @@
+{
+  "appId": "com.python.json.exporter",
+  "productName": "Python JSON Exporter",
+  "directories": {
+    "output": "release/"
+  },
+  "files": [
+    "dist/**/*",
+    "electron/**/*"
+  ],
+  "win": {
+    "target": [
+      "nsis"
+    ],
+    "icon": "public/favicon.ico"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true
+  }
+}
